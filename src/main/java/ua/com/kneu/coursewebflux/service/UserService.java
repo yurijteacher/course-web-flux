@@ -59,7 +59,7 @@ public class UserService implements ReactiveUserDetailsService {
 
         return userRepository.save(user)
                 .flatMap(savedUser -> {
-                    RolesHasUsers rhu = new RolesHasUsers(savedUser.getId(), 3L);
+                    RolesHasUsers rhu = new RolesHasUsers(savedUser.getId(), 1L);
                     return rolesHasUsersRepository.save(rhu)
                             .thenReturn(savedUser);
                 });
