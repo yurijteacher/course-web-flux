@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Save New Category</h1>
+
+<form method="post" th:action="@{/saveNewCategory}" th:object="${category}">
+
+    <label>name</label><input type="text" name="name" th:value="${category.name}"><br>
+    <label>description</label><input type="text" name="description" th:value="${category.description}">
+    <br>
+    <label>image</label><input type="text" name="image" th:value="${category.image}"><br>
+    <button type="submit">add</button>
+
+</form>
+
+</body>
+</html>

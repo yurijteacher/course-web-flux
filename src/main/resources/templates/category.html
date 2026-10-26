@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>Categories</h1>
+
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Image</th>
+    </tr>
+    </thead>
+    <tbody>
+
+
+    <tr th:each="category : ${categories}">
+        <form method="post" th:action="@{/updateCategory}">
+
+            <input type="hidden" name="id" th:value="${category.id}">
+            <td><input type="text" name="name" th:value="${category.name}"></td>
+            <td><input type="text" name="description" th:value="${category.description}"></td>
+            <td><input type="text" name="image" th:value="${category.image}"></td>
+            <td>
+                <button type="submit">update</button></td>
+        </form>
+
+
+        <td>
+            <form method="post" th:action="@{/deleteCategory}">
+                <input type="hidden" name="id" th:value="${category.id}">
+                <button type="submit">delete</button>
+            </form>
+        </td>
+    </tr>
+
+
+    </tbody>
+
+</table>
+
+</body>
+</html>

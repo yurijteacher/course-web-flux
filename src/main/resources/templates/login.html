@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Title</title>
+</head>
+<body>
+
+<h2> Form Auth </h2>
+
+<form th:action="@{/login}" method="post">
+    <input type="text" name="username" placeholder="user" required><br>
+    <input type="password" name="password" placeholder="pass" required><br>
+
+    <button type="submit">Увійти</button>
+
+</form>
+
+</body>
+</html>
