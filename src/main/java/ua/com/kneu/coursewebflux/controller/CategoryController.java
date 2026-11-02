@@ -18,19 +18,35 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
+//    @GetMapping("/category")
+//    public String getCategories(Model model) {
+//        model.addAttribute("categories", categoryService.findAll());
+//        return "category";
+//    }
+
     @GetMapping("/category")
-    public String getCategories(Model model) {
-        model.addAttribute("categories", categoryService.findAll());
-        return "category";
+    public Mono<String> getCategories(Model model) {
+
+        return categoryService.findAll()
+                .collectList()
+                .doOnNext(categories ->
+                        model.addAttribute("categories", categories)
+                )
+                .thenReturn("category");
     }
+
 
     @PostMapping("/updateCategory")
     public Mono<String> updateCategory(@ModelAttribute("category") Category category) {
-        return categoryService.updateCategory(category).thenReturn("redirect:/category");
+        return categoryService
+                .updateCategory(category)
+                .thenReturn("redirect:/category");
     }
     @PostMapping("/deleteCategory")
     public Mono<String> deleteCategory(@ModelAttribute Category category) {
-        return categoryService.deleteById(category.getId()).thenReturn("redirect:/category");
+        return categoryService
+                .deleteById(category.getId())
+                .thenReturn("redirect:/category");
     }
     @GetMapping("/new-category")
     public String getNewCategory(Model model) {

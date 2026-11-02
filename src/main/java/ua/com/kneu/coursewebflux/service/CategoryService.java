@@ -39,4 +39,8 @@ public class CategoryService {
         return categoryRepository.save(category);
     }
 
+    public Mono<Void> deleteAll() {
+        return categoryRepository.deleteAll();
+    }
+
 }

@@ -48,7 +48,7 @@ public class WebSecurityConfig {
         return http
                 .csrf(csrfSpec -> csrfSpec.disable())
                 .authorizeExchange(exchange ->
-                        exchange.pathMatchers("/", "/login", "/registration")
+                        exchange.pathMatchers("/", "/login", "/registration","api/**","/category")
                                 .permitAll()
                                 .pathMatchers("/users",
                                         "/category","/updateCategory","/new-category","/saveNewCategory"
