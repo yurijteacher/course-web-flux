@@ -10,9 +10,9 @@ create table roles(
 );
 
 create table roles_has_users(
-                                id      bigint generated always as identity not null primary key,
-                                user_id bigint,
-                                role_id bigint
+                      id       bigint generated always as identity not null primary key,
+                      username varchar(100),
+                      password varchar(100)
 );
 
 ALTER TABLE roles_has_users
